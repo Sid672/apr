@@ -1,5 +1,4 @@
-Apache Portable Runtime Library (APR)
-=====================================
+# Apache Portable Runtime Library (APR)
 
    The Apache Portable Runtime Library provides a predictable and
    consistent interface to underlying platform-specific
@@ -111,11 +110,12 @@ Configuring and Building APR on Unix
 ====================================
 
 Simply;
-
+```
    ./configure --prefix=/desired/path/of/apr
    make
    make test
    make install
+```
 
 Configure has additional options, ./configure --help will offer you
 those choices.  You may also add CC=compiler CFLAGS="compiler flags"
@@ -123,7 +123,7 @@ etc. prior to the ./configure statement (on the same line).  Please
 be warned, some flags must be passed as part of the CC command,
 itself, in order for autoconf to make the right determinations. Eg.;
 
-  CC="gcc -m64" ./configure --prefix=/desired/path/of/apr
+ ` CC="gcc -m64" ./configure --prefix=/desired/path/of/apr `
 
 will inform APR that you are compiling to a 64 bit CPU, and autoconf
 must consider that when setting up all of APR's internal and external
@@ -132,22 +132,26 @@ type declarations.
 For more verbose output from testall, you may wish to invoke testall
 with the flag;
 
-   cd test
-   ./testall -v
+ ``` 
+ cd test
+ ./testall -v
+  ```
 
 
 Building APR RPM files on Linux
 ===============================
 
 Run the following to create SRPMs:
-
+```
 rpmbuild -ts apr-<version>.tar.bz2
 rpmbuild -ts apr-util-<version>.tar.bz2
+```
 
 Run the following to create RPMs (or build from the SRPMs):
-
+```
 rpmbuild -tb apr-<version>.tar.bz2
 rpmbuild -tb apr-util-<version>.tar.bz2
+```
 
 Resolve dependencies as appropriate.
 
@@ -159,8 +163,10 @@ Using Visual Studio, you can build and run the test validation of APR.
 The Makefile.win make file has a bunch of documentation about it's
 options, but a trivial build is simply;
 
+```
   nmake -f Makefile.win 
   nmake -f Makefile.win PREFIX=c:\desired\path\of\apr install
+```
 
 Note you must manually modify the include\apr.hw file before you
 build to change default options, see the #define APR_HAS_... or the
@@ -193,7 +199,8 @@ Generating Test Coverage information with gcc
 
 If you want to generate test coverage data, use the following steps:
 
-  ./buildconf
+ ```
+ ./buildconf
   CFLAGS="--coverage -fprofile-abs-path" LDFLAGS="--coverage" ./configure
   make
   cd test
@@ -201,6 +208,7 @@ If you want to generate test coverage data, use the following steps:
   ./testall
   cd ..
   make gcov
+  ```
 
 
 Cryptographic Software Notice
